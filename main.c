@@ -7,7 +7,7 @@
 
 int main() {
 
-    PPERSON CreatePerson(int iID, char* szName)
+
 
 
     return 0;

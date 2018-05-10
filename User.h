@@ -3,26 +3,26 @@
 #ifndef HW2_USER_H
 #define HW2_USER_H
 
-typedef struct node{
+//general node, link of the list (user's friends or concatenated social network users.
+typedef struct _node{
     char* username;
-    struct node* next;
+    struct _node* next;
 }* Node;
 
+//first link of the linked list (username for example)
 typedef struct _list{
     char* list_name;
-    struct node* head;
+    struct _node* head;
     int num_items;
 }* LIST;
 
 
-//TODO Omer
 /**
  * gets new usersname and creates new struct
  * @return pointer to the new user or NULL if failed
  */
 LIST User_Create(char* username);
 
-//TODO Omer
 
 /**
  * gets pointer to user and delete its friends list and user
@@ -30,7 +30,7 @@ LIST User_Create(char* username);
  */
 void User_Delete(LIST pLIST);
 
-//TODO Omer
+
 /**
  * gets pointer to user1 and user2
  * adds user2 to user1's friends list and update his friends number.
@@ -39,16 +39,15 @@ void User_Delete(LIST pLIST);
  * no need to check that user2 is a real user
  * @return FAILURE (1) or SUCCESS(0)
  */
-int User_addFriend(PUSER_NAME, Node);
+int User_addFriend(LIST pLIST, char* new_friend);
 
-//TODO Omer
 /**
  * gets pointer to user1 and name of user2
  * removes user2 from user1's friends list and updates friends number.
  * if they weren't friends at all - do nothing return FAILURE
  * @return FAILURE (1) or SUCCESS(0)
  */
-int User_removeFriend();
+int User_removeFriend(LIST pUSER, char* pFRIEND);
 
 //TODO Daniel
 /**
@@ -56,21 +55,21 @@ int User_removeFriend();
  *
  * @return 1 for error 0 for success.
  */
-int User_getName();
+char* User_getName(LIST pUSER);
 
 //TODO Daniel
 /**
  * gets pointer to user
  * @return pointer to first friend in friends list
  */
-char* User_getFriendsList();
+Node User_getFriendsList(LIST pUSER);
 
 //TODO Daniel
 /**
  * gets pointer to user
  * @return number of friends in friends list
  */
-char* User_getFriendsNum();
+int User_getFriendsNum(LIST pUSER);
 
 //TODO Daniel
 /**
@@ -78,26 +77,7 @@ char* User_getFriendsNum();
  * prints line to sum "The user has X friends: (X>1)"
  * @return
  */
-int User_print();
-
-
-
-
-
-
-//general node, link of the list (user's friends or concatenated social network users.
-typedef struct _node{
-    char* username;
-    struct node* next;
-} Node, *PNode;
-
-
-PDATA_BASE CreateDB();
-BOOL AddDB(PDATA_BASE, PPERSON);
-PPERSON GetDB(PDATA_BASE, int);
-BOOL RemoveDB(PDATA_BASE, int);
-void PrintDB(PDATA_BASE);
-void DeleteDB(PDATA_BASE);
+int User_print(LIST pUSER);
 
 
 
